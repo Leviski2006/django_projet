@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+        <!-- Header-->
+        <div class="container-fluid page-header py-5">
+            <h1 class="text-center text-white display-6">Shop Detail</h1>
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                <li class="breadcrumb-item active text-white">Shop Detail</li>
+            </ol>
+          </div>
+        <!-- Section-->
+        <section class="py-5">
+
+            <div class="container px-4 px-lg-5 mt-5">
+            
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                        
+                    {% for product in products %}
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="rounded position-relative fruite-item">
+                            <div class="fruite-img">
+                                <img src="{{product.image.url}}" class="img-fluid w-100 rounded-top" alt="">
+                            </div>
+                            <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Telephone</div>
+                            <div class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                <h4>{{product.name}}</h4>
+                                <p>{{product.category}}</p>
+                                <div class="d-flex justify-content-between flex-lg-wrap">
+                                    <p class="text-dark fs-5 fw-bold mb-0">{{product.price}}$</p>
+                                    <a href="{% url 'product' product.id%}" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+
+            </div>
+        </section>
+
+        
+
+{% endblock %}

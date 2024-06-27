@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Header-->
+<div class="container-fluid page-header py-5">
+    <h1 class="text-center text-white display-6">Shop Detail</h1>
+    <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Shop</a></li>
+        <li class="breadcrumb-item active text-white">Shop Detail</li>
+    </ol>
+  </div>
+
+  <section class="login_box_area section_gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="login_box_img">
+                    <img class="img-fluid" src="{% static 'img/signup.jpg' %}" alt="Signup Image">
+                    <div class="hover">
+                        <h4>New to our website?</h4>
+                        <p>There are advances being made in science and technology every day, and a good example of this is the</p>
+                        <a class="btn border border-secondary rounded-pill px-3 text-primary" href="{% url 'login' %}">Already have an account? Log In</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="login_form_inner">
+                    <h3>Create an account</h3>
+                    <form class="row login_form" method="post" action="{% url 'register' %}" id="contactForm" novalidate="novalidate">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        <div class="col-md-12 form-group">
+                            {{ form.username }}
+                            {{ form.username.help_text|safe }}
+                        </div>
+                        <div class="col-md-12 form-group">
+                            {{ form.first_name }}
+                        </div>
+                        <div class="col-md-12 form-group">
+                            {{ form.last_name }}
+                        </div>
+                        <div class="col-md-12 form-group">
+                            {{ form.email }}
+                        </div>
+                        <div class="col-md-12 form-group">
+                            {{ form.password1 }}
+                            {{ form.password1.help_text|safe }}
+                        </div>
+                        <div class="col-md-12 form-group">
+                            {{ form.password2 }}
+                            {{ form.password2.help_text|safe }}
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <button type="submit" value="submit" class="btn border border-secondary rounded-pill px-3 text-primary">Sign Up</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
